@@ -19,4 +19,9 @@ public class ImageService {
         imageRepository.saveAll(images);
         //throw new RuntimeException("Error");
     }
+
+    @Transactional
+    public Image findById(Long id){
+        return imageRepository.findById(id).orElseThrow(() -> new RuntimeException("Image not found"));
+    }
 }

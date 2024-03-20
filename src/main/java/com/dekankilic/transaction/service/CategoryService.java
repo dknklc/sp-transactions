@@ -27,4 +27,9 @@ public class CategoryService {
         subCategoryService.create(subCategories);
         // throw new RuntimeException("Exception occurred");
     }
+
+    @Transactional
+    public Category findById(Long id){
+        return categoryRepository.findById(id).orElseThrow(() -> new MyException("Category not found"));
+    }
 }

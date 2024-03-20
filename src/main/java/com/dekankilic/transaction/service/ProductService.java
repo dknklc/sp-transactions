@@ -29,4 +29,9 @@ public class ProductService {
         imageService.create(images);
         throw new RuntimeException("Error");
     }
+
+    @Transactional
+    public Product findById(Long id){
+        return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
+    }
 }

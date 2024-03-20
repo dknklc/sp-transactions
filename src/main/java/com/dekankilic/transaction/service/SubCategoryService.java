@@ -18,6 +18,10 @@ public class SubCategoryService {
     public void create(List<SubCategory> subCategories){
         subCategoryRepository.saveAll(subCategories);
         throw new RuntimeException("Exception occurred");
+    }
 
+    @Transactional
+    public SubCategory findById(Long id){
+        return subCategoryRepository.findById(id).orElseThrow(() -> new RuntimeException("SubCategory not found"));
     }
 }
